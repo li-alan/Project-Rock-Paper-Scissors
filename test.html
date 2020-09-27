@@ -3,42 +3,11 @@
         <title>ROCK PAPER SCISSORS</title>
         <meta charset="UTF-8"/>
     </head>
-    <style>
-        .buttons{
-            display: flex;
-            justify-content: center;
-            
-        }
-        button{
-            border-radius: 25%;
-            border-style:none;
-            height:40px;
-            width: 60px;
-            margin: 20px 10px;
-        }
-        button:hover{
-            background-color:gray;
-            color:white;
-        }
-        html{
-            background-color:honeydew;
-        }
-    </style>
-
-    <body>
-        <div id='scoreboard'>
-
-        </div>
-        <div class=buttons>
-            <button type='button' id='rock'>Rock</button>
-            <button type='button' id='paper'>Paper</button>
-            <button type='button' id='scissors'>Scissors</button>
-        </div>
-    </body>
     <script>
         //this is the computer's move
         function computerPlay(){
-            let randomInt=Math.floor(Math.random()*3)+1;
+            let randomInt=Math.floor(Math.random()*3)
+            console.log(randomInt)
             if(randomInt==3){
                 return 'rock'
             }else if(randomInt==2){
@@ -48,9 +17,6 @@
             }
 
         }
-
-
-        
         function playRound(playerSelection, computerSelection){
             playerSelection=playerSelection.toLowerCase();
             if(playerSelection=='rock'&&computerSelection=='scissors'){
@@ -70,15 +36,15 @@
                 return 'you lose, scissors beat paper'
             }
         }
-        const scoreboard=document.querySelector('#scoreboard');
-        const content=document.createElement('div');
-
-
-        const buttons = document.querySelectorAll('button');
-        buttons.forEach((button)=>{
-            button.addEventListener('click',()=>{
-                console.log(playRound(button.id,computerPlay()));
-            });
-        });
+        function game(){
+                let userInput
+                for(i=0;i<5;i++){
+                    userInput=window.prompt('make a play')
+                    console.log(playRound(userInput,computerPlay()))
+                }
+        }
+        game()
     </script>
+
+
 </html>
