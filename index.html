@@ -1,84 +1,22 @@
 <html>
     <head>
         <title>ROCK PAPER SCISSORS</title>
+        <link href="styles/reset.css" type="text/css" rel="stylesheet">
+        <link href="styles/style.css" type="text/css" rel="stylesheet">
         <meta charset="UTF-8"/>
     </head>
-    <style>
-        .buttons{
-            display: flex;
-            justify-content: center;
-            
-        }
-        button{
-            border-radius: 25%;
-            border-style:none;
-            height:40px;
-            width: 60px;
-            margin: 20px 10px;
-        }
-        button:hover{
-            background-color:gray;
-            color:white;
-        }
-        html{
-            background-color:honeydew;
-        }
-    </style>
 
     <body>
         <div id='scoreboard'>
 
         </div>
-        <div class=buttons>
+        <div class=buttonContainer>
             <button type='button' id='rock'>Rock</button>
             <button type='button' id='paper'>Paper</button>
             <button type='button' id='scissors'>Scissors</button>
         </div>
+        <script type="text/javascript" src="logic.js"></script>
     </body>
-    <script>
-        //this is the computer's move
-        function computerPlay(){
-            let randomInt=Math.floor(Math.random()*3)+1;
-            if(randomInt==3){
-                return 'rock'
-            }else if(randomInt==2){
-                return 'paper'
-            }else{
-                return 'scissors'
-            }
-
-        }
 
 
-        
-        function playRound(playerSelection, computerSelection){
-            playerSelection=playerSelection.toLowerCase();
-            if(playerSelection=='rock'&&computerSelection=='scissors'){
-                return 'you win, rock beat scissors'
-            }else if(playerSelection=='paper'&&computerSelection=='rock'){
-                return 'you win, paper beat rock'
-            }else if(playerSelection=='scissors'&&computerSelection=='paper'){
-                return 'you win, scissors beat paper'
-            }else if(playerSelection==computerSelection){
-                return 'TIE'
-            }
-            if(computerSelection=='rock'&playerSelection=='scissors'){
-                return 'you lose, rock beat scissors'
-            }else if(computerSelection=='paper'&&playerSelection=='rock'){
-                return 'you lose, paper beat scissors'
-            }else if(computerSelection=='scissors'&&playerSelection=='paper'){
-                return 'you lose, scissors beat paper'
-            }
-        }
-        const scoreboard=document.querySelector('#scoreboard');
-        const content=document.createElement('div');
-
-
-        const buttons = document.querySelectorAll('button');
-        buttons.forEach((button)=>{
-            button.addEventListener('click',()=>{
-                console.log(playRound(button.id,computerPlay()));
-            });
-        });
-    </script>
 </html>
